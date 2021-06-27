@@ -13,3 +13,11 @@ This only affects the selected line group though. The user can make unlimited li
 It is also possible to save and open drawings as .dat files. Also compatible with .json made using http://bummsn.de/osc_txt/
 
 This version doesn't include a midi sequencer but If I get around to it the next version will
+
+
+Controls:
+  - Point and click in XV Viewport to draw lines
+  - Escape to end line. If the line doen't have enough points it will be deleted
+  - Enter / Return to complete line. Slightly different to Escape. If the line doesn't have enough points it wont be deleted
+  - Scroll wheel in + out for zoom
+  - R + mouse motion to rotate
