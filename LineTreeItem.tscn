@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Images/Remove.svg" type="Texture" id=1]
+[ext_resource path="res://LineTreeItem.gd" type="Script" id=2]
+[ext_resource path="res://LineTreeItemButtonGroup.tres" type="ButtonGroup" id=3]
+
+[sub_resource type="ImageTexture" id=1]
+
+[sub_resource type="ImageTexture" id=2]
+
+[sub_resource type="ImageTexture" id=3]
+
+[sub_resource type="ImageTexture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.372549, 0.372549, 0.372549, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.321569, 0.321569, 0.321569, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.184314, 0.184314, 0.184314, 1 )
+
+[node name="Item" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="CheckBox" parent="."]
+margin_right = 1004.0
+margin_bottom = 600.0
+focus_mode = 0
+size_flags_horizontal = 3
+custom_icons/radio_checked = SubResource( 1 )
+custom_icons/checked = SubResource( 2 )
+custom_icons/radio_unchecked = SubResource( 3 )
+custom_icons/unchecked = SubResource( 4 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+enabled_focus_mode = 0
+group = ExtResource( 3 )
+text = "Line #"
+align = 1
+
+[node name="Delete" type="TextureButton" parent="."]
+margin_left = 1008.0
+margin_right = 1024.0
+margin_bottom = 600.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+texture_normal = ExtResource( 1 )
+
+[connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]
+[connection signal="pressed" from="Delete" to="." method="_on_Delete_pressed"]

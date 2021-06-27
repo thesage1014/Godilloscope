@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Drawing Workspace.tscn" type="PackedScene" id=1]
+[ext_resource path="res://File Dialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="ButtonGroup" id=3]
+
+[node name="Main" type="Node"]
+script = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+margin_right = 1024.0
+margin_bottom = 24.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 1014.0
+margin_bottom = 19.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
+margin_left = 10.0
+margin_top = 2.0
+margin_right = 1014.0
+margin_bottom = 22.0
+
+[node name="Container" type="PanelContainer" parent="VBoxContainer/Panel/HBoxContainer"]
+margin_right = 35.0
+margin_bottom = 20.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="MenuButton" parent="VBoxContainer/Panel/HBoxContainer/Container"]
+margin_right = 35.0
+margin_bottom = 20.0
+text = "File"
+items = [ "Open Project", null, 0, false, false, 0, 0, null, "", false, "Save Project", null, 0, false, false, 1, 0, null, "", false, "Project Settings", null, 0, false, true, 2, 0, null, "", false, "About", null, 0, false, false, 3, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="VBoxContainer/Panel/HBoxContainer/Container/MenuButton"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/HBoxContainer"]
+margin_left = 39.0
+margin_right = 1004.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Drawing" type="Button" parent="VBoxContainer/Panel/HBoxContainer/HBoxContainer"]
+margin_left = 406.0
+margin_right = 469.0
+margin_bottom = 20.0
+focus_mode = 0
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 0
+group = SubResource( 3 )
+text = "Drawing"
+
+[node name="Sequencing" type="Button" parent="VBoxContainer/Panel/HBoxContainer/HBoxContainer"]
+margin_left = 473.0
+margin_right = 558.0
+margin_bottom = 20.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+group = SubResource( 3 )
+text = "Sequencing"
+
+[node name="Drawing Workspace" parent="VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Click Protect" parent="." instance=ExtResource( 2 )]

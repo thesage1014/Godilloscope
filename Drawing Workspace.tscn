@@ -1,0 +1,1240 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Y Drawing.gd" type="Script" id=1]
+[ext_resource path="res://X Drawing.gd" type="Script" id=2]
+[ext_resource path="res://Drawing Workspace.gd" type="Script" id=3]
+[ext_resource path="res://XY Drawing.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NumberEdit.tscn" type="PackedScene" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="ImageTexture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="AudioStreamSample" id=5]
+
+[node name="Drawing Workspace" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ -230.052 ]
+}
+
+[node name="VBoxContainer" type="VSplitContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -6.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top Half" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 440.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Left" type="HBoxContainer" parent="VBoxContainer/Top Half"]
+margin_right = 278.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Top Half/Left"]
+margin_right = 104.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Left/ScrollContainer"]
+margin_right = 104.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Save Sample" type="Button" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer"]
+margin_top = 80.0
+margin_right = 104.0
+margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Save Sample"
+
+[node name="Play Sample" type="Button" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer"]
+margin_top = 104.0
+margin_right = 104.0
+margin_bottom = 124.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+text = "Play Sample"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer"]
+margin_top = 128.0
+margin_right = 104.0
+margin_bottom = 132.0
+
+[node name="Editor Volume" type="PanelContainer" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer"]
+margin_top = 136.0
+margin_right = 104.0
+margin_bottom = 190.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Editor Volume"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 97.0
+margin_bottom = 47.0
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Editor Volume/VBoxContainer"]
+margin_right = 90.0
+margin_bottom = 14.0
+text = "Editor Volume"
+align = 1
+
+[node name="Volume" type="HSlider" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Editor Volume/VBoxContainer"]
+margin_top = 12.0
+margin_right = 90.0
+margin_bottom = 28.0
+focus_mode = 0
+max_value = 1.0
+step = 0.0
+value = 1.0
+scrollable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Editor Volume/VBoxContainer"]
+margin_top = 26.0
+margin_right = 90.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Editor Volume/VBoxContainer/HBoxContainer"]
+margin_right = 62.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Editor Volume/VBoxContainer/HBoxContainer"]
+margin_left = 66.0
+margin_right = 90.0
+margin_bottom = 14.0
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Frequency" type="PanelContainer" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer"]
+margin_top = 194.0
+margin_right = 104.0
+margin_bottom = 360.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 97.0
+margin_bottom = 159.0
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer"]
+margin_right = 90.0
+margin_bottom = 14.0
+text = "Frequency"
+align = 1
+
+[node name="FrequencyApprox" type="HSlider" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer"]
+margin_top = 12.0
+margin_right = 90.0
+margin_bottom = 28.0
+focus_mode = 0
+min_value = 1.0
+max_value = 22050.0
+step = 0.0
+value = 440.0
+exp_edit = true
+scrollable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer"]
+margin_top = 26.0
+margin_right = 90.0
+margin_bottom = 40.0
+
+[node name="1" type="Label" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer/HBoxContainer"]
+margin_right = 46.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="20000" type="Label" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer/HBoxContainer"]
+margin_left = 50.0
+margin_right = 90.0
+margin_bottom = 14.0
+text = "22050"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Control" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer"]
+margin_top = 38.0
+margin_right = 90.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 8 )
+
+[node name="FrequencyExact" type="SpinBox" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer"]
+margin_top = 44.0
+margin_right = 90.0
+margin_bottom = 68.0
+min_value = 1.0
+max_value = 22050.0
+step = 0.001
+value = 440.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer/FrequencyExact"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -19.0
+text = "Hz"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer"]
+margin_top = 66.0
+margin_right = 90.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 0, 12 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer"]
+margin_top = 76.0
+margin_right = 90.0
+margin_bottom = 100.0
+
+[node name="Note" type="OptionButton" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer/HBoxContainer2"]
+margin_right = 43.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "A"
+items = [ "C", null, false, 0, null, "C#", null, false, 1, null, "D", null, false, 2, null, "D#", null, false, 3, null, "E", null, false, 4, null, "F", null, false, 5, null, "F#", null, false, 6, null, "G", null, false, 7, null, "G#", null, false, 8, null, "A", null, false, 9, null, "A#", null, false, 10, null, "B", null, false, 11, null ]
+selected = 9
+
+[node name="Octave" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer/HBoxContainer2" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 47.0
+margin_right = 90.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "4"
+min_number = -1
+max_number = 8
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer"]
+margin_top = 98.0
+margin_right = 90.0
+margin_bottom = 118.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="SampleLable" type="Label" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer"]
+margin_top = 116.0
+margin_right = 90.0
+margin_bottom = 130.0
+text = "Sample Count"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SampleCount" type="SpinBox" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer"]
+margin_top = 128.0
+margin_right = 90.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 0, 10 )
+min_value = 1.0
+max_value = 44100.0
+value = 100.0
+
+[node name="Image Stuff" type="ScrollContainer" parent="VBoxContainer/Top Half/Left"]
+margin_left = 108.0
+margin_right = 278.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image Stuff" type="VBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff"]
+margin_right = 170.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Open Image" type="Button" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff"]
+margin_top = 46.0
+margin_right = 170.0
+margin_bottom = 66.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Open Image"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff"]
+margin_top = 70.0
+margin_right = 170.0
+margin_bottom = 74.0
+
+[node name="Image Stuff" type="PanelContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff"]
+margin_top = 78.0
+margin_right = 170.0
+margin_bottom = 394.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 163.0
+margin_bottom = 309.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lock" type="Button" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer"]
+margin_right = 156.0
+margin_bottom = 20.0
+toggle_mode = true
+text = "Lock Image"
+
+[node name="Control" type="PanelContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer"]
+margin_top = 24.0
+margin_right = 156.0
+margin_bottom = 302.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Image Controls" type="VBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control"]
+margin_right = 156.0
+margin_bottom = 278.0
+
+[node name="Opacity" type="PanelContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls"]
+margin_right = 156.0
+margin_bottom = 54.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Opacity"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 47.0
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Opacity/VBoxContainer"]
+margin_right = 142.0
+margin_bottom = 14.0
+text = "Opacity"
+align = 1
+
+[node name="ImageOpacity" type="HSlider" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Opacity/VBoxContainer"]
+margin_top = 12.0
+margin_right = 142.0
+margin_bottom = 28.0
+focus_mode = 0
+max_value = 1.0
+step = 0.0
+value = 0.5
+scrollable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Opacity/VBoxContainer"]
+margin_top = 26.0
+margin_right = 142.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Opacity/VBoxContainer/HBoxContainer"]
+margin_right = 114.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Opacity/VBoxContainer/HBoxContainer"]
+margin_left = 118.0
+margin_right = 142.0
+margin_bottom = 14.0
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scale" type="PanelContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls"]
+margin_top = 58.0
+margin_right = 156.0
+margin_bottom = 138.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 73.0
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer"]
+margin_right = 142.0
+margin_bottom = 14.0
+text = "Scale"
+align = 1
+
+[node name="ImageScaleXY" type="SpinBox" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer"]
+margin_top = 12.0
+margin_right = 142.0
+margin_bottom = 36.0
+max_value = 4096.0
+step = 0.01
+value = 1.0
+align = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer"]
+margin_top = 34.0
+margin_right = 142.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer"]
+margin_top = 42.0
+margin_right = 142.0
+margin_bottom = 66.0
+
+[node name="HBoxContainerX" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer/HBoxContainer"]
+margin_right = 69.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer/HBoxContainer/HBoxContainerX"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "x"
+
+[node name="ImageScaleX" type="SpinBox" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer/HBoxContainer/HBoxContainerX"]
+margin_left = 11.0
+margin_right = 69.0
+margin_bottom = 24.0
+custom_icons/updown = SubResource( 2 )
+min_value = -4096.0
+max_value = 4096.0
+step = 0.001
+value = 1.0
+allow_greater = true
+allow_lesser = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainerY" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer/HBoxContainer"]
+margin_left = 73.0
+margin_right = 142.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer/HBoxContainer/HBoxContainerY"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "y"
+
+[node name="ImageScaleY" type="SpinBox" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer/HBoxContainer/HBoxContainerY"]
+margin_left = 11.0
+margin_right = 69.0
+margin_bottom = 24.0
+custom_icons/updown = SubResource( 2 )
+min_value = -4096.0
+max_value = 4096.0
+step = 0.001
+value = 1.0
+allow_greater = true
+allow_lesser = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Offset" type="PanelContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls"]
+margin_top = 142.0
+margin_right = 156.0
+margin_bottom = 192.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Offset"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 43.0
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Offset/VBoxContainer"]
+margin_right = 142.0
+margin_bottom = 14.0
+text = "Offset"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Offset/VBoxContainer"]
+margin_top = 12.0
+margin_right = 142.0
+margin_bottom = 36.0
+
+[node name="HBoxContainerX" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Offset/VBoxContainer/HBoxContainer"]
+margin_right = 69.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Offset/VBoxContainer/HBoxContainer/HBoxContainerX"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "x"
+
+[node name="ImageOffsetX" type="SpinBox" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Offset/VBoxContainer/HBoxContainer/HBoxContainerX"]
+margin_left = 11.0
+margin_right = 69.0
+margin_bottom = 24.0
+custom_icons/updown = SubResource( 2 )
+min_value = -4096.0
+max_value = 4096.0
+step = 0.01
+allow_greater = true
+allow_lesser = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainerY" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Offset/VBoxContainer/HBoxContainer"]
+margin_left = 73.0
+margin_right = 142.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Offset/VBoxContainer/HBoxContainer/HBoxContainerY"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "y"
+
+[node name="ImageOffsetY" type="SpinBox" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Offset/VBoxContainer/HBoxContainer/HBoxContainerY"]
+margin_left = 11.0
+margin_right = 69.0
+margin_bottom = 24.0
+custom_icons/updown = SubResource( 2 )
+min_value = -4096.0
+max_value = 4096.0
+step = 0.01
+allow_greater = true
+allow_lesser = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rotation" type="PanelContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls"]
+margin_top = 196.0
+margin_right = 156.0
+margin_bottom = 278.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Rotation"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 75.0
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Rotation/VBoxContainer"]
+margin_right = 142.0
+margin_bottom = 14.0
+text = "Rotation"
+align = 1
+
+[node name="ImageRotationApproximate" type="HSlider" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Rotation/VBoxContainer"]
+margin_top = 12.0
+margin_right = 142.0
+margin_bottom = 28.0
+focus_mode = 0
+max_value = 360.0
+step = 0.0
+scrollable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Rotation/VBoxContainer"]
+margin_top = 26.0
+margin_right = 142.0
+margin_bottom = 40.0
+
+[node name="0" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Rotation/VBoxContainer/HBoxContainer"]
+margin_right = 114.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="360" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Rotation/VBoxContainer/HBoxContainer"]
+margin_left = 118.0
+margin_right = 142.0
+margin_bottom = 14.0
+text = "360"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Control" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Rotation/VBoxContainer"]
+margin_top = 38.0
+margin_right = 142.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 8 )
+
+[node name="ImageRotationExact" type="SpinBox" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Rotation/VBoxContainer"]
+margin_top = 44.0
+margin_right = 142.0
+margin_bottom = 68.0
+max_value = 360.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Rotation/VBoxContainer/ImageRotationExact"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -19.0
+text = "deg"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImageClickProtect" type="Control" parent="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control"]
+visible = false
+margin_right = 156.0
+margin_bottom = 278.0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/Top Half"]
+margin_left = 282.0
+margin_right = 732.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="XY Drawing" parent="VBoxContainer/Top Half/AspectRatioContainer" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 0.0
+margin_right = 445.0
+margin_bottom = 440.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="Right" type="HBoxContainer" parent="VBoxContainer/Top Half"]
+margin_left = 736.0
+margin_right = 1024.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="Drawing and line controls" type="ScrollContainer" parent="VBoxContainer/Top Half/Right"]
+margin_right = 170.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls"]
+margin_right = 170.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Open Drawing" type="Button" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer"]
+margin_top = 45.0
+margin_right = 170.0
+margin_bottom = 65.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Open Drawing"
+
+[node name="Save Drawing" type="Button" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer"]
+margin_top = 69.0
+margin_right = 170.0
+margin_bottom = 89.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Save Drawing"
+
+[node name="Lower Separator2" type="HSeparator" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer"]
+margin_top = 93.0
+margin_right = 170.0
+margin_bottom = 97.0
+
+[node name="Copy Drawing" type="Button" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer"]
+margin_top = 101.0
+margin_right = 170.0
+margin_bottom = 121.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Copy Drawing"
+
+[node name="Paste Drawing" type="Button" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer"]
+margin_top = 125.0
+margin_right = 170.0
+margin_bottom = 145.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Paste Drawing"
+
+[node name="Lower Separator" type="HSeparator" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer"]
+margin_top = 149.0
+margin_right = 170.0
+margin_bottom = 157.0
+rect_min_size = Vector2( 0, 8 )
+
+[node name="Panel Container" type="PanelContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer"]
+margin_top = 161.0
+margin_right = 170.0
+margin_bottom = 395.0
+
+[node name="LineControls" type="VBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container"]
+modulate = Color( 1, 1, 1, 0.501961 )
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 163.0
+margin_bottom = 227.0
+
+[node name="Scale" type="PanelContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls"]
+margin_right = 156.0
+margin_bottom = 80.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 73.0
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer"]
+margin_right = 142.0
+margin_bottom = 14.0
+text = "Scale"
+align = 1
+
+[node name="LineScaleXY" type="SpinBox" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer"]
+margin_top = 12.0
+margin_right = 142.0
+margin_bottom = 36.0
+max_value = 4096.0
+step = 0.01
+value = 1.0
+align = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer"]
+margin_top = 34.0
+margin_right = 142.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer"]
+margin_top = 42.0
+margin_right = 142.0
+margin_bottom = 66.0
+
+[node name="HBoxContainerX" type="HBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer/HBoxContainer"]
+margin_right = 69.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer/HBoxContainer/HBoxContainerX"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "x"
+
+[node name="LineScaleX" type="SpinBox" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer/HBoxContainer/HBoxContainerX"]
+margin_left = 11.0
+margin_right = 69.0
+margin_bottom = 24.0
+custom_icons/updown = SubResource( 2 )
+min_value = -4096.0
+max_value = 4096.0
+step = 0.001
+value = 1.0
+allow_greater = true
+allow_lesser = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainerY" type="HBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer/HBoxContainer"]
+margin_left = 73.0
+margin_right = 142.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer/HBoxContainer/HBoxContainerY"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "y"
+
+[node name="LineScaleY" type="SpinBox" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer/HBoxContainer/HBoxContainerY"]
+margin_left = 11.0
+margin_right = 69.0
+margin_bottom = 24.0
+custom_icons/updown = SubResource( 2 )
+min_value = -4096.0
+max_value = 4096.0
+step = 0.001
+value = 1.0
+allow_greater = true
+allow_lesser = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Offset" type="PanelContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls"]
+margin_top = 84.0
+margin_right = 156.0
+margin_bottom = 134.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Offset"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 43.0
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Offset/VBoxContainer"]
+margin_right = 142.0
+margin_bottom = 14.0
+text = "Offset"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Offset/VBoxContainer"]
+margin_top = 12.0
+margin_right = 142.0
+margin_bottom = 36.0
+
+[node name="HBoxContainerX" type="HBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Offset/VBoxContainer/HBoxContainer"]
+margin_right = 69.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Offset/VBoxContainer/HBoxContainer/HBoxContainerX"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "x"
+
+[node name="LineOffsetX" type="SpinBox" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Offset/VBoxContainer/HBoxContainer/HBoxContainerX"]
+margin_left = 11.0
+margin_right = 69.0
+margin_bottom = 24.0
+custom_icons/updown = SubResource( 2 )
+min_value = -4096.0
+max_value = 4096.0
+allow_greater = true
+allow_lesser = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainerY" type="HBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Offset/VBoxContainer/HBoxContainer"]
+margin_left = 73.0
+margin_right = 142.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Offset/VBoxContainer/HBoxContainer/HBoxContainerY"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "y"
+
+[node name="LineOffsetY" type="SpinBox" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Offset/VBoxContainer/HBoxContainer/HBoxContainerY"]
+margin_left = 11.0
+margin_right = 69.0
+margin_bottom = 24.0
+custom_icons/updown = SubResource( 2 )
+min_value = -4096.0
+max_value = 4096.0
+allow_greater = true
+allow_lesser = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line Rotation" type="PanelContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls"]
+margin_top = 138.0
+margin_right = 156.0
+margin_bottom = 220.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 75.0
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer"]
+margin_right = 142.0
+margin_bottom = 14.0
+text = "Rotation"
+align = 1
+
+[node name="LineRotationApproximate" type="HSlider" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer"]
+margin_top = 12.0
+margin_right = 142.0
+margin_bottom = 28.0
+focus_mode = 0
+min_value = -360.0
+max_value = 360.0
+step = 0.0
+scrollable = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer"]
+margin_top = 26.0
+margin_right = 142.0
+margin_bottom = 40.0
+
+[node name="-360" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/HBoxContainer"]
+margin_right = 114.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "-360"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="360" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/HBoxContainer"]
+margin_left = 118.0
+margin_right = 142.0
+margin_bottom = 14.0
+text = "360"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Control" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer"]
+margin_top = 38.0
+margin_right = 142.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 8 )
+
+[node name="LineRotationExact" type="SpinBox" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer"]
+margin_top = 44.0
+margin_right = 142.0
+margin_bottom = 68.0
+min_value = -4096.0
+max_value = 4096.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/LineRotationExact"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -19.0
+text = "deg"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineControlsClickProtect" type="Control" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 163.0
+margin_bottom = 227.0
+
+[node name="LineList" type="PanelContainer" parent="VBoxContainer/Top Half/Right"]
+margin_left = 174.0
+margin_right = 288.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Right/LineList"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 107.0
+margin_bottom = 433.0
+
+[node name="Line Snapping" type="Button" parent="VBoxContainer/Top Half/Right/LineList/VBoxContainer"]
+margin_right = 100.0
+margin_bottom = 20.0
+focus_mode = 0
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 0
+text = "Line Snapping"
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Top Half/Right/LineList/VBoxContainer"]
+margin_top = 24.0
+margin_right = 100.0
+margin_bottom = 426.0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Top Half/Right/LineList/VBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineItemContainer" type="VBoxContainer" parent="VBoxContainer/Top Half/Right/LineList/VBoxContainer/Panel/ScrollContainer"]
+margin_right = 100.0
+margin_bottom = 402.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom Half" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 452.0
+margin_right = 1024.0
+margin_bottom = 594.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="X Axis" type="PanelContainer" parent="VBoxContainer/Bottom Half"]
+margin_right = 479.0
+margin_bottom = 142.0
+size_flags_horizontal = 3
+
+[node name="X Axis" type="VBoxContainer" parent="VBoxContainer/Bottom Half/X Axis"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 472.0
+margin_bottom = 135.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Bottom Half/X Axis/X Axis"]
+margin_right = 465.0
+margin_bottom = 14.0
+text = "X Axis"
+align = 1
+
+[node name="X Drawing" type="Panel" parent="VBoxContainer/Bottom Half/X Axis/X Axis"]
+margin_top = 18.0
+margin_right = 465.0
+margin_bottom = 128.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 2 )
+
+[node name="Wobble Adjust" type="PanelContainer" parent="VBoxContainer/Bottom Half"]
+margin_left = 483.0
+margin_right = 541.0
+margin_bottom = 142.0
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Bottom Half/Wobble Adjust"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 51.0
+margin_bottom = 135.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer"]
+margin_right = 14.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 14, 0 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -47.0
+margin_top = -7.0
+margin_right = 47.0
+margin_bottom = 7.0
+rect_rotation = -90.0
+rect_pivot_offset = Vector2( 47, 7 )
+text = "Compensation"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wobble Adjust" type="VSlider" parent="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer"]
+margin_left = 14.0
+margin_right = 30.0
+margin_bottom = 128.0
+focus_mode = 0
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.05
+
+[node name="Control2" type="Control" parent="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer"]
+margin_left = 30.0
+margin_right = 44.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 14, 0 )
+
+[node name="0" type="Label" parent="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Control2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -4.0
+margin_top = -15.0
+margin_right = 4.0
+margin_bottom = -1.0
+rect_rotation = -90.0
+rect_pivot_offset = Vector2( 4, 7 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Label" parent="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Control2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -4.0
+margin_right = 4.0
+margin_bottom = 14.0
+rect_rotation = -90.0
+rect_pivot_offset = Vector2( 4, 7 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Y Axis" type="PanelContainer" parent="VBoxContainer/Bottom Half"]
+margin_left = 545.0
+margin_right = 1024.0
+margin_bottom = 142.0
+size_flags_horizontal = 3
+
+[node name="Y Axis" type="VBoxContainer" parent="VBoxContainer/Bottom Half/Y Axis"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 472.0
+margin_bottom = 135.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Bottom Half/Y Axis/Y Axis"]
+margin_right = 465.0
+margin_bottom = 14.0
+text = "Y Axis"
+align = 1
+
+[node name="Y Drawing" type="Panel" parent="VBoxContainer/Bottom Half/Y Axis/Y Axis"]
+margin_top = 18.0
+margin_right = 465.0
+margin_bottom = 128.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 5 )
+
+[connection signal="pressed" from="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Save Sample" to="." method="_on_Save_Sample_pressed"]
+[connection signal="toggled" from="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Play Sample" to="." method="_on_Play_Sample_toggled"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Editor Volume/VBoxContainer/Volume" to="." method="_on_Volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer/FrequencyApprox" to="." method="_FrequencyApprox_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer/FrequencyExact" to="." method="_FrequencyExact_changed"]
+[connection signal="item_selected" from="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer/HBoxContainer2/Note" to="." method="_Note_selected"]
+[connection signal="number_entered" from="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer/HBoxContainer2/Octave" to="." method="_on_Octave_number_entered"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Frequency/VBoxContainer/SampleCount" to="." method="_SampleCount_changed"]
+[connection signal="pressed" from="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Open Image" to="." method="_on_Open_Image_pressed"]
+[connection signal="toggled" from="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Lock" to="." method="_LockImage_toggled"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Opacity/VBoxContainer/ImageOpacity" to="." method="_on_Opacity_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer/ImageScaleXY" to="." method="_on_ImageScaleXY_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer/HBoxContainer/HBoxContainerX/ImageScaleX" to="." method="_on_ImageScaleX_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Scale/VBoxContainer/HBoxContainer/HBoxContainerY/ImageScaleY" to="." method="_on_ImageScaleY_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Offset/VBoxContainer/HBoxContainer/HBoxContainerX/ImageOffsetX" to="." method="_on_X_Offset_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Offset/VBoxContainer/HBoxContainer/HBoxContainerY/ImageOffsetY" to="." method="_on_Y_Offset_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Rotation/VBoxContainer/ImageRotationApproximate" to="." method="_ImageRotationApproximate_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Left/Image Stuff/Image Stuff/Image Stuff/VBoxContainer/Control/Image Controls/Rotation/VBoxContainer/ImageRotationExact" to="." method="_ImageRotationExact_changed"]
+[connection signal="line_created" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_add_LineTreeItem"]
+[connection signal="line_deselected" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_on_XY_Drawing_line_deselected"]
+[connection signal="line_destroyed" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_on_XY_Drawing_line_destroyed"]
+[connection signal="line_updated" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_on_XY_Drawing_line_updated"]
+[connection signal="line_updated" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="VBoxContainer/Bottom Half/X Axis/X Axis/X Drawing" method="_on_XY_Drawing_line_updated"]
+[connection signal="line_updated" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="VBoxContainer/Bottom Half/Y Axis/Y Axis/Y Drawing" method="_on_XY_Drawing_line_updated"]
+[connection signal="texture_offset_changed" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_on_XY_Drawing_texture_offset_changed"]
+[connection signal="texture_rotation_changed" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_on_XY_Drawing_texture_rotation_changed"]
+[connection signal="texture_scale_changed" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_on_XY_Drawing_texture_scale_changed"]
+[connection signal="pressed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Open Drawing" to="." method="_on_Open_Drawing_pressed"]
+[connection signal="pressed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Save Drawing" to="." method="_on_Save_Drawing_pressed"]
+[connection signal="pressed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Copy Drawing" to="." method="_on_Copy_Drawing_pressed"]
+[connection signal="pressed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Paste Drawing" to="." method="_on_Paste_Drawing_pressed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer/LineScaleXY" to="." method="_LineScaleXY_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer/HBoxContainer/HBoxContainerX/LineScaleX" to="." method="_LineScaleX_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Scale/VBoxContainer/HBoxContainer/HBoxContainerY/LineScaleY" to="." method="_LineScaleY_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Offset/VBoxContainer/HBoxContainer/HBoxContainerX/LineOffsetX" to="." method="_LineOffsetX_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Offset/VBoxContainer/HBoxContainer/HBoxContainerY/LineOffsetY" to="." method="_LineOffsetY_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/LineRotationApproximate" to="." method="_LineRotationApproximate_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/LineRotationExact" to="." method="_LineRotationExact_changed"]
+[connection signal="toggled" from="VBoxContainer/Top Half/Right/LineList/VBoxContainer/Line Snapping" to="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" method="_on_Line_Snapping_toggled"]
+[connection signal="value_changed" from="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Wobble Adjust" to="VBoxContainer/Bottom Half/X Axis/X Axis/X Drawing" method="_Wobble_Adjust_changed"]
+[connection signal="value_changed" from="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Wobble Adjust" to="VBoxContainer/Bottom Half/Y Axis/Y Axis/Y Drawing" method="_Wobble_Adjust_changed"]
