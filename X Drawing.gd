@@ -59,6 +59,8 @@ func _draw_line_x():
 					Color.white
 				)
 		channel_x = new_channel
+	else:
+		channel_x = []
 
 
 func _Wobble_Adjust_changed(value):

@@ -16,4 +16,5 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			if event.scancode == OS.find_scancode_from_string("ESCAPE"):
-				DrawingWorkspace.get_focus_owner().release_focus()
+				if DrawingWorkspace.get_focus_owner() != null:
+					DrawingWorkspace.get_focus_owner().release_focus()

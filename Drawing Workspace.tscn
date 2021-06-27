@@ -1123,7 +1123,7 @@ margin_right = 30.0
 margin_bottom = 128.0
 focus_mode = 0
 min_value = 0.01
-max_value = 1.0
+max_value = 0.99
 step = 0.01
 value = 0.05
 
@@ -1236,5 +1236,6 @@ stream = SubResource( 5 )
 [connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/LineRotationApproximate" to="." method="_LineRotationApproximate_changed"]
 [connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/LineRotationExact" to="." method="_LineRotationExact_changed"]
 [connection signal="toggled" from="VBoxContainer/Top Half/Right/LineList/VBoxContainer/Line Snapping" to="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" method="_on_Line_Snapping_toggled"]
+[connection signal="value_changed" from="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Wobble Adjust" to="." method="_on_Wobble_Adjust_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Wobble Adjust" to="VBoxContainer/Bottom Half/X Axis/X Axis/X Drawing" method="_Wobble_Adjust_changed"]
 [connection signal="value_changed" from="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Wobble Adjust" to="VBoxContainer/Bottom Half/Y Axis/Y Axis/Y Drawing" method="_Wobble_Adjust_changed"]

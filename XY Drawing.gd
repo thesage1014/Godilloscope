@@ -134,8 +134,8 @@ func _unhandled_key_input(event):
 						lines_data.remove(selected_line)
 						emit_signal('line_destroyed')
 						selected_line = -1
-					else:
-						emit_signal('line_updated', lines_data)
+#					else:
+					emit_signal('line_updated', lines_data)
 					_draw_lines()
 		elif event.scancode == OS.find_scancode_from_string("R"):
 			rotating = event.pressed

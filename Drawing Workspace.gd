@@ -339,6 +339,7 @@ var new_stream_sample : AudioStreamSample
 const channel_count = 2
 func _on_XY_Drawing_line_updated(lines):
 	lines_array = lines
+	yield(get_tree().create_timer(0.01), 'timeout')
 	_generate_new_audio()
 
 func _generate_new_audio():
@@ -374,8 +375,9 @@ func _generate_new_audio():
 	new_stream_sample.loop_mode = AudioStreamSample.LOOP_FORWARD
 	new_stream_sample.loop_end = sample_count - 1
 	if Audio_playing:
+		var pos = Audio.get_playback_position()
 		Audio.stream = new_stream_sample
-		Audio.play()
+		Audio.play(pos)
 
 var streampeer = StreamPeerBuffer.new()
 func float2byte(_float):
@@ -514,4 +516,6 @@ func _LineRotationExact_changed(value):
 	XY_Viewport._clamp_drawing()
 	LineRotationApproximate.value = value
 
-
+func _on_Wobble_Adjust_value_changed(value):
+	yield(get_tree().create_timer(0.01), 'timeout')
+	_generate_new_audio()

@@ -40,7 +40,7 @@ func _draw_line_y():
 				itteration += 1
 			new_channel.append(
 				Vector2(
-					distance_btwn_points_on_curve * (itteration - 0.05), 
+					distance_btwn_points_on_curve * (itteration - compensation), 
 					-(lines_y[line_y][ lines_y[line_y].size() - 1])
 				)
 			)
@@ -59,6 +59,8 @@ func _draw_line_y():
 					Color.white
 				)
 		channel_y = new_channel
+	else:
+		channel_y = []
 
 
 func _Wobble_Adjust_changed(value):
