@@ -157,6 +157,8 @@ func _on_Paste_Drawing_pressed():
 		XY_Viewport.emit_signal('line_updated', lines_array)
 		_on_XY_Drawing_line_deselected()
 
+
+		
 func _on_Save_Drawing_pressed():
 	_open_file_dialog("Save Drawing", ["*.dat"], File_Dialog_Modes.Save_Drawing)
 
@@ -519,3 +521,4 @@ func _LineRotationExact_changed(value):
 func _on_Wobble_Adjust_value_changed(value):
 	yield(get_tree().create_timer(0.01), 'timeout')
 	_generate_new_audio()
+
