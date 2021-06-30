@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Y Drawing.gd" type="Script" id=1]
 [ext_resource path="res://X Drawing.gd" type="Script" id=2]
 [ext_resource path="res://Drawing Workspace.gd" type="Script" id=3]
 [ext_resource path="res://XY Drawing.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Spectrum.gd" type="Script" id=5]
 [ext_resource path="res://NumberEdit.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
@@ -15,7 +16,7 @@
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="AudioStreamSample" id=5]
+[sub_resource type="AudioStreamGenerator" id=5]
 
 [node name="Drawing Workspace" type="Control"]
 anchor_right = 1.0
@@ -115,7 +116,7 @@ margin_bottom = 28.0
 focus_mode = 0
 max_value = 1.0
 step = 0.0
-value = 1.0
+value = 0.5
 scrollable = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top Half/Left/ScrollContainer/HBoxContainer/Editor Volume/VBoxContainer"]
@@ -935,9 +936,9 @@ margin_top = 12.0
 margin_right = 142.0
 margin_bottom = 28.0
 focus_mode = 0
-min_value = -360.0
-max_value = 360.0
-step = 0.0
+min_value = -180.0
+max_value = 180.0
+step = 5.0
 scrollable = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer"]
@@ -945,20 +946,20 @@ margin_top = 26.0
 margin_right = 142.0
 margin_bottom = 40.0
 
-[node name="-360" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/HBoxContainer"]
+[node name="-180" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/HBoxContainer"]
 margin_right = 114.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
-text = "-360"
+text = "-180"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="360" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/HBoxContainer"]
+[node name="180" type="Label" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/HBoxContainer"]
 margin_left = 118.0
 margin_right = 142.0
 margin_bottom = 14.0
-text = "360"
+text = "180"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1015,7 +1016,7 @@ margin_right = 142.0
 margin_bottom = 26.0
 rect_min_size = Vector2( 0, 8 )
 
-[node name="LineRotationApproximate" type="HSlider" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Smooth Points/VBoxContainer"]
+[node name="Smooth slider" type="HSlider" parent="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Smooth Points/VBoxContainer"]
 margin_top = 24.0
 margin_right = 142.0
 margin_bottom = 40.0
@@ -1114,14 +1115,14 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.33
 
 [node name="X Axis" type="PanelContainer" parent="VBoxContainer/Bottom Half"]
-margin_right = 479.0
+margin_right = 318.0
 margin_bottom = 142.0
 size_flags_horizontal = 3
 
 [node name="X Axis" type="VBoxContainer" parent="VBoxContainer/Bottom Half/X Axis"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 472.0
+margin_right = 311.0
 margin_bottom = 135.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -1129,14 +1130,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer/Bottom Half/X Axis/X Axis"]
-margin_right = 465.0
+margin_right = 304.0
 margin_bottom = 14.0
 text = "X Axis"
 align = 1
 
 [node name="X Drawing" type="Panel" parent="VBoxContainer/Bottom Half/X Axis/X Axis"]
 margin_top = 18.0
-margin_right = 465.0
+margin_right = 304.0
 margin_bottom = 128.0
 rect_clip_content = true
 size_flags_horizontal = 3
@@ -1145,8 +1146,8 @@ custom_styles/panel = SubResource( 4 )
 script = ExtResource( 2 )
 
 [node name="Wobble Adjust" type="PanelContainer" parent="VBoxContainer/Bottom Half"]
-margin_left = 483.0
-margin_right = 541.0
+margin_left = 322.0
+margin_right = 380.0
 margin_bottom = 142.0
 rect_clip_content = true
 
@@ -1228,15 +1229,15 @@ __meta__ = {
 }
 
 [node name="Y Axis" type="PanelContainer" parent="VBoxContainer/Bottom Half"]
-margin_left = 545.0
-margin_right = 1024.0
+margin_left = 384.0
+margin_right = 702.0
 margin_bottom = 142.0
 size_flags_horizontal = 3
 
 [node name="Y Axis" type="VBoxContainer" parent="VBoxContainer/Bottom Half/Y Axis"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 472.0
+margin_right = 311.0
 margin_bottom = 135.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -1244,20 +1245,52 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer/Bottom Half/Y Axis/Y Axis"]
-margin_right = 465.0
+margin_right = 304.0
 margin_bottom = 14.0
 text = "Y Axis"
 align = 1
 
 [node name="Y Drawing" type="Panel" parent="VBoxContainer/Bottom Half/Y Axis/Y Axis"]
 margin_top = 18.0
-margin_right = 465.0
+margin_right = 304.0
 margin_bottom = 128.0
 rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 4 )
 script = ExtResource( 1 )
+
+[node name="Spectrum" type="PanelContainer" parent="VBoxContainer/Bottom Half"]
+margin_left = 706.0
+margin_right = 1024.0
+margin_bottom = 142.0
+size_flags_horizontal = 3
+
+[node name="Spectrum" type="VBoxContainer" parent="VBoxContainer/Bottom Half/Spectrum"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 311.0
+margin_bottom = 135.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Bottom Half/Spectrum/Spectrum"]
+margin_right = 304.0
+margin_bottom = 14.0
+text = "Spectrum"
+align = 1
+
+[node name="Spectrum" type="Panel" parent="VBoxContainer/Bottom Half/Spectrum/Spectrum"]
+margin_top = 18.0
+margin_right = 304.0
+margin_bottom = 128.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 5 )
@@ -1283,8 +1316,8 @@ stream = SubResource( 5 )
 [connection signal="line_created" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_add_LineTreeItem"]
 [connection signal="line_deselected" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_on_XY_Drawing_line_deselected"]
 [connection signal="line_destroyed" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_on_XY_Drawing_line_destroyed"]
-[connection signal="line_updated" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="VBoxContainer/Bottom Half/X Axis/X Axis/X Drawing" method="_on_XY_Drawing_line_updated"]
 [connection signal="line_updated" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="VBoxContainer/Bottom Half/Y Axis/Y Axis/Y Drawing" method="_on_XY_Drawing_line_updated"]
+[connection signal="line_updated" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="VBoxContainer/Bottom Half/X Axis/X Axis/X Drawing" method="_on_XY_Drawing_line_updated"]
 [connection signal="line_updated" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_on_XY_Drawing_line_updated"]
 [connection signal="texture_offset_changed" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_on_XY_Drawing_texture_offset_changed"]
 [connection signal="texture_rotation_changed" from="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" to="." method="_on_XY_Drawing_texture_rotation_changed"]
@@ -1301,8 +1334,10 @@ stream = SubResource( 5 )
 [connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/LineRotationApproximate" to="." method="_LineRotationApproximate_changed"]
 [connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Line Rotation/VBoxContainer/LineRotationExact" to="." method="_LineRotationExact_changed"]
 [connection signal="pressed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Smooth Points/VBoxContainer/Smooth Points" to="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" method="_smooth_points"]
-[connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Smooth Points/VBoxContainer/LineRotationApproximate" to="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" method="_on_Smoothing_Amount_changed"]
+[connection signal="value_changed" from="VBoxContainer/Top Half/Right/Drawing and line controls/HBoxContainer/Panel Container/LineControls/Smooth Points/VBoxContainer/Smooth slider" to="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" method="_on_Smoothing_Amount_changed"]
 [connection signal="toggled" from="VBoxContainer/Top Half/Right/LineList/VBoxContainer/Line Snapping" to="VBoxContainer/Top Half/AspectRatioContainer/XY Drawing" method="_on_Line_Snapping_toggled"]
-[connection signal="value_changed" from="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Wobble Adjust" to="VBoxContainer/Bottom Half/X Axis/X Axis/X Drawing" method="_Wobble_Adjust_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/Bottom Half/X Axis/X Axis/X Drawing" to="VBoxContainer/Bottom Half/X Axis/X Axis/X Drawing" method="mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Bottom Half/X Axis/X Axis/X Drawing" to="VBoxContainer/Bottom Half/X Axis/X Axis/X Drawing" method="mouse_exited"]
 [connection signal="value_changed" from="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Wobble Adjust" to="VBoxContainer/Bottom Half/Y Axis/Y Axis/Y Drawing" method="_Wobble_Adjust_changed"]
+[connection signal="value_changed" from="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Wobble Adjust" to="VBoxContainer/Bottom Half/X Axis/X Axis/X Drawing" method="_Wobble_Adjust_changed"]
 [connection signal="value_changed" from="VBoxContainer/Bottom Half/Wobble Adjust/HBoxContainer/Wobble Adjust" to="." method="_on_Wobble_Adjust_value_changed"]

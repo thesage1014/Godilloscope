@@ -67,7 +67,7 @@ onready var y_channel = get_node("VBoxContainer/Bottom Half/Y Axis/Y Axis/Y Draw
 onready var Audio = $AudioStreamPlayer
 
 var lines_array = []
-var Audio_playing = false
+var Audio_playing = true
 var lock_image = false
 
 enum File_Dialog_Modes{Open_Project, Open_Drawing, Open_Image, Save_Project, Save_Drawing, Save_Sample}
@@ -80,6 +80,7 @@ func _ready():
 	PlaySample = find_node("Play Sample", true, false)
 	
 	EditorVolume = find_node("Volume", true, false)
+	EditorVolume.value = .2
 	FrequencyApproximate = find_node("FrequencyApprox", true, false)
 	FrequencyExact = find_node("FrequencyExact", true, false)
 	FrequencyNote = find_node("Note", true, false)
